@@ -9,6 +9,8 @@ function examRelevant(item) {
     'scheme', 'economy', 'technology', 'award', 'sports', 'cyber', 'himachal', 'office',
     'योजना', 'अर्थव्यवस्था', 'प्रौद्योगिकी', 'पुरस्कार', 'खेल', 'साइबर', 'हिमाचल', 'कार्यालय',
   ];
+  const text = `${item.title} ${item.description}`.toLowerCase();
+  const keywords = ['scheme', 'economy', 'technology', 'award', 'sports', 'cyber', 'himachal', 'office'];
   return keywords.some((k) => text.includes(k));
 }
 
@@ -36,6 +38,13 @@ function renderNews() {
     newsContainer.appendChild(li);
   });
 
+  const relevant = allNews.filter(examRelevant);
+  const display = relevant.slice(offset, offset + 5);
+  display.forEach((item) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a target="_blank" href="${item.url}">${item.title}</a><small>${item.source} • ${item.date}</small>`;
+    newsContainer.appendChild(li);
+  });
   offset = (offset + 1) % Math.max(1, relevant.length - 4);
 }
 
@@ -52,4 +61,6 @@ newsTopicFilter?.addEventListener('change', () => {
 
 initDashboard().catch(() => {
   if (newsContainer) newsContainer.innerHTML = '<li>Unable to load detailed bilingual current affairs data.</li>';
+initDashboard().catch(() => {
+  if (newsContainer) newsContainer.innerHTML = '<li>Unable to load current affairs data.</li>';
 });

@@ -57,6 +57,9 @@ function renderQuiz(questions) {
     card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
       ${['A', 'B', 'C', 'D'].map((opt) =>
         `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
+    card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${q.question}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${q['option_' + opt.toLowerCase()]}</label>`
       ).join('')}`;
     quizContainer.appendChild(card);
   });

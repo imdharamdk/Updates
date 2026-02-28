@@ -122,3 +122,23 @@ ul.news-list { list-style: none; display: grid; gap: 10px; }
   button { width: 100%; }
   .actions { display: grid; grid-template-columns: 1fr; }
 }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+header { background: #0f3d7a; color: #fff; padding: 16px; }
+.subtitle { opacity: 0.9; margin-top: 4px; }
+nav { background: #123f80; color: #fff; padding: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
+nav a { color: #fff; text-decoration: none; font-weight: 600; }
+.container { width: min(1080px, 92%); margin: 20px auto; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.card { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.hint { color: #6b7280; font-size: 0.92rem; margin: 6px 0 10px; }
+button { background: #0f3d7a; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; cursor: pointer; margin-right: 8px; }
+button.secondary { background: #475569; margin-top: 10px; }
+input, select { width: 100%; padding: 8px; margin-top: 8px; margin-bottom: 10px; }
+label { display: block; margin: 5px 0; }
+ul.news-list { list-style: none; display: grid; gap: 10px; }
+ul.news-list li a { color: #0f3d7a; font-weight: 600; text-decoration: none; display: block; }
+ul.news-list small { color: #6b7280; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border: 1px solid #d1d5db; padding: 8px; text-align: left; }
+.table th { background: #eef2ff; }
