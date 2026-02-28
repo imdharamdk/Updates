@@ -33,6 +33,16 @@ function pickQuestions(topic = 'all') {
   return pool.slice(0, 10);
 }
 
+function qText(q) {
+  return `${q.question_en || q.question}<br><span class="text-hi">${q.question_hi || ''}</span>`;
+}
+
+function optText(q, opt) {
+  const en = q[`option_${opt.toLowerCase()}_en`] || q['option_' + opt.toLowerCase()];
+  const hi = q[`option_${opt.toLowerCase()}_hi`] || '';
+  return `${en}<br><span class="text-hi">${hi}</span>`;
+}
+
 function renderQuiz(questions) {
   if (!quizContainer) return;
   quizContainer.innerHTML = '';
@@ -44,6 +54,9 @@ function renderQuiz(questions) {
   questions.forEach((q, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
     card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${q.question}</p>
       ${['A', 'B', 'C', 'D'].map((opt) =>
         `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${q['option_' + opt.toLowerCase()]}</label>`

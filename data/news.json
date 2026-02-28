@@ -1,4 +1,81 @@
 [
+  {
+    "topic": "government_schemes",
+    "topic_label": "Government Schemes / सरकारी योजनाएँ",
+    "title_en": "Himachal launches e-Office expansion plan for district-level departments",
+    "title_hi": "हिमाचल ने जिला स्तर के विभागों के लिए ई-ऑफिस विस्तार योजना शुरू की",
+    "description_en": "The state government has expanded e-Office implementation to speed up file movement, reduce paperwork, and improve citizen service transparency in district offices. This is important for JOA IT aspirants under digital governance and office automation topics.",
+    "description_hi": "राज्य सरकार ने जिला कार्यालयों में फाइलों की गति बढ़ाने, कागजी काम कम करने और नागरिक सेवाओं में पारदर्शिता लाने के लिए ई-ऑफिस का विस्तार किया है। यह JOA IT अभ्यर्थियों के लिए डिजिटल गवर्नेंस और ऑफिस ऑटोमेशन विषय में महत्वपूर्ण है।",
+    "source": "HP Govt Bulletin",
+    "url": "https://example.com/news/eoffice-expansion",
+    "date": "2026-02-22"
+  },
+  {
+    "topic": "economy",
+    "topic_label": "Economy / अर्थव्यवस्था",
+    "title_en": "State budget prioritizes youth skill development and digital services",
+    "title_hi": "राज्य बजट में युवा कौशल विकास और डिजिटल सेवाओं को प्राथमिकता",
+    "description_en": "The latest state budget allocates higher spending toward employment-linked skill training, digital public service centers, and technology adoption in administrative processes. Useful for economy and governance-based current affairs questions.",
+    "description_hi": "नवीनतम राज्य बजट में रोजगार-उन्मुख कौशल प्रशिक्षण, डिजिटल पब्लिक सेवा केंद्रों और प्रशासनिक प्रक्रियाओं में तकनीक अपनाने के लिए अधिक प्रावधान किया गया है। यह अर्थव्यवस्था और शासन से जुड़े समसामयिक प्रश्नों के लिए उपयोगी है।",
+    "source": "Economic Review",
+    "url": "https://example.com/news/budget-skills",
+    "date": "2026-02-23"
+  },
+  {
+    "topic": "science_technology",
+    "topic_label": "Science & Technology / विज्ञान और प्रौद्योगिकी",
+    "title_en": "National cyber hygiene campaign rolled out in public institutions",
+    "title_hi": "सार्वजनिक संस्थानों में राष्ट्रीय साइबर हाइजीन अभियान शुरू",
+    "description_en": "Government institutions have started mandatory cyber hygiene sessions covering password safety, phishing awareness, and secure browsing. This directly supports JOA IT syllabus sections on cyber security and internet awareness.",
+    "description_hi": "सरकारी संस्थानों में पासवर्ड सुरक्षा, फ़िशिंग जागरूकता और सुरक्षित ब्राउज़िंग पर अनिवार्य साइबर हाइजीन सत्र शुरू किए गए हैं। यह JOA IT के साइबर सुरक्षा और इंटरनेट जागरूकता पाठ्यक्रम से सीधे जुड़ा है।",
+    "source": "Tech Affairs India",
+    "url": "https://example.com/news/cyber-hygiene",
+    "date": "2026-02-24"
+  },
+  {
+    "topic": "awards",
+    "topic_label": "Awards / पुरस्कार",
+    "title_en": "Digital governance initiative receives national public service award",
+    "title_hi": "डिजिटल गवर्नेंस पहल को राष्ट्रीय लोक सेवा पुरस्कार मिला",
+    "description_en": "A public digital service platform was recognized for reducing service delivery time and improving grievance tracking. Such updates are frequently asked in award-based current affairs sections.",
+    "description_hi": "एक डिजिटल लोक सेवा प्लेटफ़ॉर्म को सेवा वितरण समय घटाने और शिकायत ट्रैकिंग सुधारने के लिए सम्मानित किया गया। इस तरह की खबरें पुरस्कार-आधारित समसामयिक अनुभाग में अक्सर पूछी जाती हैं।",
+    "source": "National Wire",
+    "url": "https://example.com/news/digital-award",
+    "date": "2026-02-25"
+  },
+  {
+    "topic": "sports",
+    "topic_label": "Sports / खेल",
+    "title_en": "Indian contingent secures multiple medals in international event",
+    "title_hi": "अंतरराष्ट्रीय प्रतियोगिता में भारतीय दल ने कई पदक जीते",
+    "description_en": "India's strong medal performance across athletics and shooting has become an important talking point in weekly sports current affairs. Note athlete names and event categories for exam revision.",
+    "description_hi": "एथलेटिक्स और शूटिंग में भारत के बेहतर प्रदर्शन ने साप्ताहिक खेल समसामयिकी में प्रमुख स्थान बनाया है। परीक्षा तैयारी के लिए खिलाड़ियों के नाम और इवेंट श्रेणियाँ याद रखना उपयोगी है।",
+    "source": "Sports Desk",
+    "url": "https://example.com/news/sports-medals",
+    "date": "2026-02-26"
+  },
+  {
+    "topic": "himachal_current",
+    "topic_label": "Himachal Current Affairs / हिमाचल समसामयिकी",
+    "title_en": "HP announces digital record modernization in revenue offices",
+    "title_hi": "हिमाचल ने राजस्व कार्यालयों में डिजिटल रिकॉर्ड आधुनिकीकरण की घोषणा की",
+    "description_en": "Revenue offices are upgrading legacy records to digital formats to enable faster document retrieval and public verification. This links with office productivity, data handling, and citizen-centric governance topics.",
+    "description_hi": "राजस्व कार्यालय पुराने अभिलेखों को डिजिटल रूप में बदल रहे हैं ताकि दस्तावेज़ जल्दी प्राप्त हों और सार्वजनिक सत्यापन आसान हो। यह ऑफिस उत्पादकता, डेटा प्रबंधन और नागरिक-केंद्रित शासन विषयों से जुड़ा है।",
+    "source": "HP State Update",
+    "url": "https://example.com/news/hp-records",
+    "date": "2026-02-27"
+  },
+  {
+    "topic": "government_schemes",
+    "topic_label": "Government Schemes / सरकारी योजनाएँ",
+    "title_en": "Skill-linked computer literacy program starts for rural youth",
+    "title_hi": "ग्रामीण युवाओं के लिए कौशल-आधारित कंप्यूटर साक्षरता कार्यक्रम शुरू",
+    "description_en": "The new scheme covers foundational computer, MS Office, internet usage, and online application handling for job-ready youth. This is directly useful for JOA IT exam-oriented practice.",
+    "description_hi": "नई योजना में युवाओं के लिए कंप्यूटर मूलभूत ज्ञान, MS Office, इंटरनेट उपयोग और ऑनलाइन आवेदन प्रक्रिया का प्रशिक्षण शामिल है। यह JOA IT परीक्षा की तैयारी के लिए सीधे उपयोगी है।",
+    "source": "Rural Development Desk",
+    "url": "https://example.com/news/rural-it-skill",
+    "date": "2026-02-28"
+  }
   {"title":"Himachal launches new digital office workflow for departments","description":"State offices start paperless movement to improve efficiency and transparency.","source":"HP News Desk","url":"https://example.com/news1","date":"2026-02-20"},
   {"title":"New government scheme supports youth IT training in hill districts","description":"Skill-focused program launched for competitive exam and employability support.","source":"Govt Bulletin","url":"https://example.com/news2","date":"2026-02-21"},
   {"title":"India economy update: inflation trends and policy outlook","description":"Economy and budget awareness remains important for current affairs preparation.","source":"Economic Daily","url":"https://example.com/news3","date":"2026-02-22"},
