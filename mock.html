@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Test</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/question-sources.js"></script>
+  <script defer src="assets/js/mock.js"></script>
+</head>
+<body>
+<nav><a href="index.html">Dashboard</a><a href="mock.html">Mock Test</a></nav>
+<main class="container">
+  <section class="hero card">
+    <h2>JOA IT Mock Engine</h2>
+    <p>50-question simulation with syllabus-only questions, difficulty control, and non-repeating refresh.</p>
+  </section>
+
+  <div class="card">
+    <h2>Full Mock Test (50 Questions) / पूर्ण मॉक टेस्ट (50 प्रश्न)</h2>
+    <p id="mock-timer">Time Left: 60:00</p>
+    <div class="filter-row">
+      <div>
+        <label>Difficulty</label>
+        <select id="mock-difficulty-filter">
+          <option value="all">All</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="start-mock">Start Mock</button>
+      <button id="refresh-mock" class="secondary">Refresh New Questions</button>
+      <button id="submit-mock">Submit Mock</button>
+    </div>
+    <p class="hint">Questions are shown in English + Hindi for bilingual practice.</p>
+    <p id="mock-source" class="hint"></p>
+    <div id="mock-container" class="grid"></div>
+  </div>
+</main>
+</body>
+</html>
