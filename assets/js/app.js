@@ -39,5 +39,6 @@ async function loadJson(path) {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  window.addEventListener('load', () => navigator.serviceWorker.register('./offline/service-worker.js'));
 }
 window.addEventListener('DOMContentLoaded', updateAuthNav);

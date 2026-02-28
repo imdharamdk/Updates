@@ -18,6 +18,13 @@ function qText(q) {
 
 function optText(q, opt) {
   return `${q[`option_${opt.toLowerCase()}_en`] || q[`option_${opt.toLowerCase()}`]}<br><span class="text-hi">${q[`option_${opt.toLowerCase()}_hi`] || ''}</span>`;
+
+function qText(q) {
+  return `${q.question_en}<br><span class="text-hi">${q.question_hi || ''}</span>`;
+}
+
+function optText(q, opt) {
+  return `${q[`option_${opt.toLowerCase()}_en`] || q['option_' + opt.toLowerCase()]}<br><span class="text-hi">${q[`option_${opt.toLowerCase()}_hi`] || ''}</span>`;
 }
 
 function renderMock() {
@@ -28,6 +35,13 @@ function renderMock() {
     card.innerHTML = `<p><strong>${idx + 1}.</strong> ${qText(q)}</p>
       ${['A', 'B', 'C', 'D'].map((opt) =>
         `<label><input type="radio" name="m_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
+    card.className = 'card';
+    card.innerHTML = `<p><strong>${idx + 1}.</strong> ${qText(q)}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="m_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
+    card.innerHTML = `<p><strong>${idx + 1}.</strong> ${q.question}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="m_${q.id}" value="${opt}"> ${q['option_' + opt.toLowerCase()]}</label>`
       ).join('')}`;
     mockContainer.appendChild(card);
   });
@@ -58,6 +72,11 @@ function generateMockSet() {
 }
 
 async function startMock() {
+  mockQuestions = [...questionBank].sort(() => 0.5 - Math.random()).slice(0, 50);
+  renderMock();
+}
+
+function startMock() {
   const user = currentUser();
   if (!user) return alert('Please login first.');
 
@@ -65,6 +84,14 @@ async function startMock() {
     const loaded = await loadQuestionBank({ amount: 100 });
     questionBank = loaded.questions;
     if (mockSourceLabel) mockSourceLabel.textContent = `Question source: ${loaded.source} | Syllabus-only filter active`;
+    loadJson('./data/questions.json').then((bank) => {
+      questionBank = bank;
+      generateMockSet();
+      duration = 60 * 60;
+      clearInterval(timerId);
+      timerId = setInterval(tick, 1000);
+    });
+    return;
   }
 
   generateMockSet();
@@ -78,6 +105,13 @@ function refreshMockQuestions() {
   if (!user) return alert('Please login first.');
   if (questionBank.length === 0) return alert('Start mock first.');
   generateMockSet();
+  loadJson('./data/questions.json').then((bank) => {
+    mockQuestions = [...bank].sort(() => 0.5 - Math.random()).slice(0, 50);
+    duration = 60 * 60;
+    renderMock();
+    clearInterval(timerId);
+    timerId = setInterval(tick, 1000);
+  });
 }
 
 function submitMock() {
@@ -100,6 +134,7 @@ function submitMock() {
     percent: Number(((score / mockQuestions.length) * 100).toFixed(2)),
     at: Date.now(),
   });
+  performance.push({ email: user.email, module: 'mock', score, total: mockQuestions.length, percent: Number(((score / mockQuestions.length) * 100).toFixed(2)), at: Date.now() });
   setData(STORAGE_KEYS.performance, performance);
 
   alert(`Mock Result: ${score}/${mockQuestions.length}`);

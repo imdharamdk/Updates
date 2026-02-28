@@ -76,4 +76,11 @@
     "url": "https://example.com/news/rural-it-skill",
     "date": "2026-02-28"
   }
+  {"title":"Himachal launches new digital office workflow for departments","description":"State offices start paperless movement to improve efficiency and transparency.","source":"HP News Desk","url":"https://example.com/news1","date":"2026-02-20"},
+  {"title":"New government scheme supports youth IT training in hill districts","description":"Skill-focused program launched for competitive exam and employability support.","source":"Govt Bulletin","url":"https://example.com/news2","date":"2026-02-21"},
+  {"title":"India economy update: inflation trends and policy outlook","description":"Economy and budget awareness remains important for current affairs preparation.","source":"Economic Daily","url":"https://example.com/news3","date":"2026-02-22"},
+  {"title":"National cyber security awareness campaign starts in schools","description":"Basic cyber hygiene and online safety topics included in digital literacy drive.","source":"Tech Affairs","url":"https://example.com/news4","date":"2026-02-23"},
+  {"title":"Indian athletes win medals in international sports event","description":"Sports current affairs update with medal tally highlights.","source":"Sports Now","url":"https://example.com/news5","date":"2026-02-24"},
+  {"title":"Science and technology mission announces AI research grants","description":"Research grants approved to strengthen innovation ecosystem.","source":"Science Today","url":"https://example.com/news6","date":"2026-02-25"},
+  {"title":"Major award announced for public digital governance initiative","description":"Award recognizes public service delivery improvements using IT systems.","source":"National Wire","url":"https://example.com/news7","date":"2026-02-26"}
 ]

@@ -9,6 +9,10 @@ const questionSourceLabel = document.getElementById('question-source');
 let questionBank = [];
 let currentSet = [];
 let seenInSession = new Set();
+const quizUser = document.getElementById('quiz-user');
+
+let questionBank = [];
+let currentSet = [];
 
 function getAttemptedSet(email) {
   const attempts = getData(STORAGE_KEYS.attempts, {});
@@ -22,6 +26,7 @@ function rememberAttempts(email, questionIds) {
 }
 
 function pickQuestions(topic = 'all', difficulty = 'all') {
+function pickQuestions(topic = 'all') {
   const user = currentUser();
   if (!user) return [];
 
@@ -36,6 +41,8 @@ function pickQuestions(topic = 'all', difficulty = 'all') {
     if (topic !== 'all') pool = pool.filter((q) => q.topic === topic);
     if (difficulty !== 'all') pool = pool.filter((q) => q.difficulty === difficulty);
   }
+  let pool = questionBank.filter((q) => !attempted.has(q.id));
+  if (topic !== 'all') pool = pool.filter((q) => q.topic === topic);
 
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -52,6 +59,15 @@ function qText(q) {
 
 function optText(q, opt) {
   const en = q[`option_${opt.toLowerCase()}_en`] || q[`option_${opt.toLowerCase()}`];
+  return pool.slice(0, 10);
+}
+
+function qText(q) {
+  return `${q.question_en || q.question}<br><span class="text-hi">${q.question_hi || ''}</span>`;
+}
+
+function optText(q, opt) {
+  const en = q[`option_${opt.toLowerCase()}_en`] || q['option_' + opt.toLowerCase()];
   const hi = q[`option_${opt.toLowerCase()}_hi`] || '';
   return `${en}<br><span class="text-hi">${hi}</span>`;
 }
@@ -61,6 +77,7 @@ function renderQuiz(questions) {
   quizContainer.innerHTML = '';
   if (questions.length === 0) {
     quizContainer.innerHTML = '<p>No syllabus-matched fresh questions available for selected filters.</p>';
+    quizContainer.innerHTML = '<p>No fresh questions left for selected topic. Try another topic.</p>';
     return;
   }
 
@@ -70,6 +87,13 @@ function renderQuiz(questions) {
     card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
       ${['A', 'B', 'C', 'D'].map((opt) =>
         `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
+    card.className = 'card';
+    card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
+    card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${q.question}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${q['option_' + opt.toLowerCase()]}</label>`
       ).join('')}`;
     quizContainer.appendChild(card);
   });
@@ -90,6 +114,7 @@ function loadQuiz() {
 
   quizUser.textContent = `Logged in: ${user.name}`;
   currentSet = pickQuestions(topicFilter.value, difficultyFilter.value);
+  currentSet = pickQuestions(topicFilter.value);
   renderQuiz(currentSet);
 }
 
@@ -113,6 +138,7 @@ async function initQuiz() {
   const loaded = await loadQuestionBank({ amount: 80 });
   questionBank = loaded.questions;
   if (questionSourceLabel) questionSourceLabel.textContent = `Question source: ${loaded.source} | Syllabus-only filter active`;
+  questionBank = await loadJson('./data/questions.json');
   loadQuiz();
 }
 
