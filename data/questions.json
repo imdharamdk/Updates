@@ -1040,6 +1040,7 @@
     "option_d_hi": "हिंदी: Disable updates"
   }
 ]
+]
   {"id":1,"topic":"dbms","question":"Which normal form removes transitive dependency?","option_a":"1NF","option_b":"2NF","option_c":"3NF","option_d":"BCNF","correct_option":"C"},
   {"id":2,"topic":"ms_office","question":"Which Excel function returns arithmetic mean?","option_a":"SUM()","option_b":"AVERAGE()","option_c":"COUNT()","option_d":"ROUND()","correct_option":"B"},
   {"id":3,"topic":"networking","question":"What does LAN stand for?","option_a":"Large Area Node","option_b":"Local Access Network","option_c":"Local Area Network","option_d":"Line Area Network","correct_option":"C"},

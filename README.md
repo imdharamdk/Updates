@@ -64,6 +64,45 @@ Open: `http://localhost:8080`
 - User accounts, attempts, and performance are stored in browser `localStorage`.
 - Leaderboard is device/browser local in static mode.
 - For real multi-user backend sync, deploy a server-backed version.
+
+
+## Current Affairs API (RapidAPI + Fallback)
+
+- Dashboard first tries RapidAPI live fetch via `assets/js/dashboard.js`.
+- Configured RapidAPI key and host are used in client-side requests.
+- If RapidAPI fails or quota is exceeded, app falls back to local `data/news.json`.
+
+> Security note: In static sites, API keys are visible in browser source. For production, proxy requests through a backend to keep keys secret.
+
+
+## Quiz APIs (QuizAPI.io + OpenTDB + Fallback)
+
+- Quiz/Mock first try **QuizAPI.io** with the provided key.
+- If QuizAPI fails, app falls back to **OpenTDB** (`https://opentdb.com/api.php?amount=50&type=multiple`).
+- If both fail, app uses local `data/questions.json`.
+- The active source is shown on Quiz and Mock pages.
+
+> Security note: In static hosting, client-side API keys are visible. Use a backend proxy in production.
+
+
+## New Enhancements
+
+- Upgraded UI with hero sections, improved quiz/mock card styling, badges/chips, and better filter layout.
+- Added **difficulty selector** for both Quiz and Mock test (`easy`, `medium`, `hard`).
+- Added strict **syllabus-only question filtering** for API and local datasets.
+- Added stronger **non-repeat logic** so each refresh produces fresh questions in session before recycle.
+
+### Syllabus-only coverage
+Questions are restricted to these domains:
+- Computer Basics
+- Windows
+- MS Office
+- Internet
+- Networking
+- DBMS
+- Cyber Security
+- Current Affairs
+- Himachal GK
 3. Under **Build and deployment**, choose:
    - **Source**: `Deploy from a branch`
    - **Branch**: `main` (or your branch), `/ (root)`

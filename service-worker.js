@@ -10,6 +10,7 @@ const STATIC_ASSETS = [
   './assets/css/styles.css',
   './assets/js/app.js',
   './assets/js/dashboard.js',
+  './assets/js/question-sources.js',
   './assets/js/auth.js',
   './assets/js/quiz.js',
   './assets/js/mock.js',

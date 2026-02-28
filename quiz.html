@@ -5,6 +5,7 @@
   <title>Quiz</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/question-sources.js"></script>
   <script defer src="assets/js/quiz.js"></script>
 </head>
 <body>
@@ -14,6 +15,49 @@
   <a href="mock.html">Mock Test</a>
 </nav>
 <main class="container">
+  <section class="hero card">
+    <h2>Smart Practice Quiz</h2>
+    <p>Now with syllabus-only filtering, non-repeating refresh, and difficulty selector.</p>
+  </section>
+
+  <div class="card">
+    <h2>10 Question Practice Quiz</h2>
+    <p id="quiz-user" class="hint"></p>
+    <p id="question-source" class="hint"></p>
+
+    <div class="filter-row">
+      <div>
+        <label>Topic Filter</label>
+        <select id="topic-filter">
+          <option value="all">All Syllabus Topics</option>
+          <option value="current_affairs">Current Affairs</option>
+          <option value="ms_office">MS Office</option>
+          <option value="dbms">DBMS</option>
+          <option value="networking">Networking</option>
+          <option value="cyber_security">Cyber Security</option>
+          <option value="himachal_gk">Himachal GK</option>
+          <option value="computer_basics">Computer Basics</option>
+          <option value="internet">Internet</option>
+          <option value="windows">Windows</option>
+        </select>
+      </div>
+      <div>
+        <label>Difficulty</label>
+        <select id="difficulty-filter">
+          <option value="all">All</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="quiz-container" class="grid"></div>
+    <br>
+    <div class="actions">
+      <button id="refresh-quiz">Refresh New Questions</button>
+      <button id="submit-quiz">Submit Quiz</button>
+    </div>
   <div class="card">
     <h2>10 Question Practice Quiz</h2>
     <p id="quiz-user" class="hint"></p>

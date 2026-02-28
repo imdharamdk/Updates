@@ -2,6 +2,13 @@ const quizContainer = document.getElementById('quiz-container');
 const submitQuizButton = document.getElementById('submit-quiz');
 const refreshQuizButton = document.getElementById('refresh-quiz');
 const topicFilter = document.getElementById('topic-filter');
+const difficultyFilter = document.getElementById('difficulty-filter');
+const quizUser = document.getElementById('quiz-user');
+const questionSourceLabel = document.getElementById('question-source');
+
+let questionBank = [];
+let currentSet = [];
+let seenInSession = new Set();
 const quizUser = document.getElementById('quiz-user');
 
 let questionBank = [];
@@ -18,11 +25,22 @@ function rememberAttempts(email, questionIds) {
   setData(STORAGE_KEYS.attempts, attempts);
 }
 
+function pickQuestions(topic = 'all', difficulty = 'all') {
 function pickQuestions(topic = 'all') {
   const user = currentUser();
   if (!user) return [];
 
   const attempted = getAttemptedSet(user.email);
+  let pool = questionBank.filter((q) => !attempted.has(q.id) && !seenInSession.has(q.id));
+  if (topic !== 'all') pool = pool.filter((q) => q.topic === topic);
+  if (difficulty !== 'all') pool = pool.filter((q) => q.difficulty === difficulty);
+
+  if (pool.length < 10) {
+    seenInSession = new Set();
+    pool = questionBank.filter((q) => !attempted.has(q.id));
+    if (topic !== 'all') pool = pool.filter((q) => q.topic === topic);
+    if (difficulty !== 'all') pool = pool.filter((q) => q.difficulty === difficulty);
+  }
   let pool = questionBank.filter((q) => !attempted.has(q.id));
   if (topic !== 'all') pool = pool.filter((q) => q.topic === topic);
 
@@ -30,6 +48,17 @@ function pickQuestions(topic = 'all') {
     const j = Math.floor(Math.random() * (i + 1));
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
+  const picked = pool.slice(0, 10);
+  picked.forEach((q) => seenInSession.add(q.id));
+  return picked;
+}
+
+function qText(q) {
+  return `${q.question_en || q.question}<br><span class="text-hi">${q.question_hi || ''}</span><br><span class="chip">${q.topic}</span> <span class="chip">${q.difficulty}</span>`;
+}
+
+function optText(q, opt) {
+  const en = q[`option_${opt.toLowerCase()}_en`] || q[`option_${opt.toLowerCase()}`];
   return pool.slice(0, 10);
 }
 
@@ -47,12 +76,17 @@ function renderQuiz(questions) {
   if (!quizContainer) return;
   quizContainer.innerHTML = '';
   if (questions.length === 0) {
+    quizContainer.innerHTML = '<p>No syllabus-matched fresh questions available for selected filters.</p>';
     quizContainer.innerHTML = '<p>No fresh questions left for selected topic. Try another topic.</p>';
     return;
   }
 
   questions.forEach((q, idx) => {
     const card = document.createElement('div');
+    card.className = 'card question-card';
+    card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
+      ${['A', 'B', 'C', 'D'].map((opt) =>
+        `<label><input type="radio" name="q_${q.id}" value="${opt}"> ${optText(q, opt)}</label>`
     card.className = 'card';
     card.innerHTML = `<p><strong>Q${idx + 1}.</strong> ${qText(q)}</p>
       ${['A', 'B', 'C', 'D'].map((opt) =>
@@ -79,6 +113,7 @@ function loadQuiz() {
   }
 
   quizUser.textContent = `Logged in: ${user.name}`;
+  currentSet = pickQuestions(topicFilter.value, difficultyFilter.value);
   currentSet = pickQuestions(topicFilter.value);
   renderQuiz(currentSet);
 }
@@ -100,6 +135,9 @@ function submitQuiz() {
 }
 
 async function initQuiz() {
+  const loaded = await loadQuestionBank({ amount: 80 });
+  questionBank = loaded.questions;
+  if (questionSourceLabel) questionSourceLabel.textContent = `Question source: ${loaded.source} | Syllabus-only filter active`;
   questionBank = await loadJson('./data/questions.json');
   loadQuiz();
 }
@@ -107,4 +145,5 @@ async function initQuiz() {
 refreshQuizButton?.addEventListener('click', loadQuiz);
 submitQuizButton?.addEventListener('click', submitQuiz);
 topicFilter?.addEventListener('change', loadQuiz);
+difficultyFilter?.addEventListener('change', loadQuiz);
 initQuiz();
