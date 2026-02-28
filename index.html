@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HPSSC/HPRCA JOA IT Prep</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/dashboard.js"></script>
+</head>
+<body>
+<header>
+  <h1>HPSSC / HPRCA JOA IT Prep</h1>
+  <p class="subtitle">Responsive bilingual static MVP</p>
+</header>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="mock.html">Mock Test</a>
+  <a href="himachal.html">Himachal GK</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="login.html" id="auth-link">Login</a>
+</nav>
+
+<main class="container grid">
+  <section class="card span-2">
+    <h2>Current Affairs (updates every 15s)</h2>
+    <p class="hint">Detailed bilingual current affairs (English + Hindi) for exam-focused revision.</p>
+    <label for="news-topic-filter">Filter by Topic</label>
+    <select id="news-topic-filter">
+      <option value="all">All Topics</option>
+      <option value="government_schemes">Government Schemes / सरकारी योजनाएँ</option>
+      <option value="economy">Economy / अर्थव्यवस्था</option>
+      <option value="science_technology">Science & Technology / विज्ञान और प्रौद्योगिकी</option>
+      <option value="awards">Awards / पुरस्कार</option>
+      <option value="sports">Sports / खेल</option>
+      <option value="himachal_current">Himachal Current Affairs / हिमाचल समसामयिकी</option>
+    </select>
+    <ul id="news-list" class="news-list"></ul>
+  </section>
+
+  <section class="card">
+    <h2>Daily Plan</h2>
+    <p>✅ 10 Current Affairs MCQs</p>
+    <p>✅ 10 Computer/IT MCQs</p>
+    <p>✅ 1 Mock Test (50 Q)</p>
+    <p>✅ Himachal GK revision</p>
+  </section>
+</main>
+</body>
+</html>
